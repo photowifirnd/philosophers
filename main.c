@@ -50,18 +50,16 @@ void	ft_get_lunch(t_philo *ph)
 {
 	pthread_mutex_lock(&ph->mutex);
 	ph->eat_flag = 1;
-	ft_messages(ph, "philosopher has eaten\n", 0);
-	ph->last_eat = ft_time_in_ms();
-	ph->will_die = ph->last_eat + ph->r->tt_die;
 	usleep(ph->r->tt_eat * 1000);
 	pthread_mutex_unlock(&ph->r->forks[ph->r_hand]);
 	pthread_mutex_unlock(&ph->r->forks[ph->l_hand]);
+	ft_messages(ph, "philosopher has eaten\n", 0);
 	ph->cnt++;
 	ph->eat_flag = 0;
 	pthread_mutex_unlock(&ph->mutex);
 	pthread_mutex_unlock(&ph->eat);
-	usleep(ph->r->tt_sleep * 1000);
 	ft_messages(ph, "philosopher is sleeping\n", 0);
+	usleep(ph->r->tt_sleep * 1000);
 }
 
 void	ft_get_forks(t_philo *ph)
@@ -70,6 +68,8 @@ void	ft_get_forks(t_philo *ph)
 	ft_messages(ph, "philosopher has taken a right fork\n", 0);
 	pthread_mutex_lock(&ph->r->forks[ph->l_hand]);
 	ft_messages(ph, "philosopher has taken a left fork\n", 0);
+	ph->last_eat = ft_time_in_ms();
+	ph->will_die = ph->last_eat + ph->r->tt_die;
 }
 
 void	ft_eat_or_die(void *ph)
@@ -187,8 +187,8 @@ int	ft_set_philos(t_rules *r)
 		r->philo[i].r_hand = (i + 1) % r->n_philos;
 		r->philo[i].l_hand = i;
 		r->philo[i].eat_flag = 0;
-		r->philo[i].will_die = 0;
 		r->philo[i].last_eat = 0;
+		r->philo[i].will_die = 0;
 		r->philo[i].cnt = 0;
 		r->philo[i].r = r;
 		pthread_mutex_init(&r->philo[i].mutex, NULL);
