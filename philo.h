@@ -30,7 +30,7 @@ typedef struct		s_rules
 	uint64_t	tt_sleep;
 	int		is_dead;
 	size_t	n_times_to_eat;
-	uint64_t	initial_time;
+//	uint64_t	initial_time;
 	t_philo		*philo;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	philo_dead;

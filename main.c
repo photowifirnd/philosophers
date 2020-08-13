@@ -46,20 +46,26 @@ void	ft_messages(t_philo *ph, const char *str, int id_message)
 	pthread_mutex_unlock(&ph->r->message);
 }
 
+void	ft_get_sleep(t_philo *ph)
+{
+	ft_messages(ph, "philosopher is sleeping\n", 0);
+	usleep(ph->r->tt_sleep * 1000);
+}
+
 void	ft_get_lunch(t_philo *ph)
 {
 	pthread_mutex_lock(&ph->mutex);
+	ph->cnt++;
 	ph->eat_flag = 1;
+	ph->last_eat = ft_time_in_ms();
+	ph->will_die = ph->last_eat + ph->r->tt_die;
 	usleep(ph->r->tt_eat * 1000);
 	pthread_mutex_unlock(&ph->r->forks[ph->r_hand]);
 	pthread_mutex_unlock(&ph->r->forks[ph->l_hand]);
 	ft_messages(ph, "philosopher has eaten\n", 0);
-	ph->cnt++;
 	ph->eat_flag = 0;
 	pthread_mutex_unlock(&ph->mutex);
 	pthread_mutex_unlock(&ph->eat);
-	ft_messages(ph, "philosopher is sleeping\n", 0);
-	usleep(ph->r->tt_sleep * 1000);
 }
 
 void	ft_get_forks(t_philo *ph)
@@ -68,8 +74,6 @@ void	ft_get_forks(t_philo *ph)
 	ft_messages(ph, "philosopher has taken a right fork\n", 0);
 	pthread_mutex_lock(&ph->r->forks[ph->l_hand]);
 	ft_messages(ph, "philosopher has taken a left fork\n", 0);
-	ph->last_eat = ft_time_in_ms();
-	ph->will_die = ph->last_eat + ph->r->tt_die;
 }
 
 void	ft_eat_or_die(void *ph)
@@ -114,6 +118,7 @@ void	ft_living(void *ph)
 		ft_get_forks(philo);
 		ft_get_lunch(philo);
 		//ft_leave_forks(philo);
+		ft_get_sleep(philo);
 		ft_messages(philo, "philosopher is thinking\n", 0);
 	}
 }
@@ -153,10 +158,26 @@ int	ft_init_threads(t_rules *r)
 	i = 0;
 	while (i < r->n_philos)
 	{
+		if (i % 2 == 0)
+		{
 		philo = (void *)(&r->philo[i]);
 		if (pthread_create(&thread_id, NULL, (void *)ft_living, philo) != 0)
 			return (1);
 		pthread_detach(thread_id);
+		}
+		i++;
+	}
+	usleep(1000);
+	i = 0;
+	while (i < r->n_philos)
+	{
+		if (i % 2 == 1)
+		{
+			philo = (void *)(&r->philo[i]);
+			if (pthread_create(&thread_id, NULL, (void *)ft_living, philo) != 0)
+				return (1);
+			pthread_detach(thread_id);
+		}
 		i++;
 	}
 	return (0);
