@@ -155,7 +155,12 @@ int	ft_init_threads(t_rules *r)
 			return (1);
 		pthread_detach(thread_id);
 	}
-	i = 0;
+	philo = (void *)(&r->philo[0]);
+	if (pthread_create(&thread_id, NULL, (void *)ft_living, philo) != 0)
+		return (1);
+	pthread_detach(thread_id);
+	i = 1;
+	usleep(1000);
 	while (i < r->n_philos)
 	{
 		if (i % 2 == 0)
