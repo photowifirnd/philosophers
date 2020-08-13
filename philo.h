@@ -25,6 +25,7 @@ typedef struct		s_philo
 typedef struct		s_rules
 {
 	unsigned int	n_philos;
+	unsigned int	*n_forks;
 	uint64_t	tt_die;
 	uint64_t	tt_eat;
 	uint64_t	tt_sleep;
@@ -35,6 +36,7 @@ typedef struct		s_rules
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	philo_dead;
 	pthread_mutex_t	message;
+	pthread_mutex_t waiter;
 }			t_rules;
 
 int			ft_set_philos(t_rules *r);

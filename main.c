@@ -1,5 +1,25 @@
 #include "philo.h"
 
+int	ft_can_take(t_philo *ph)
+{
+	int	ret;
+
+	ret = 0;
+	pthread_mutex_lock(&ph->r->waiter);
+	if (ph->r->n_forks[ph->l_hand] == 0 && ph->r->n_forks[ph->r_hand] == 0)
+	{
+		ph->r->n_forks[ph->l_hand] = 1;
+		ph->r->n_forks[ph->r_hand] = 1;
+		pthread_mutex_lock(&ph->r->forks[ph->r_hand]);
+		ft_messages(ph, "philosopher has taken a right fork\n", 0);
+		pthread_mutex_lock(&ph->r->forks[ph->l_hand]);
+		ft_messages(ph, "philosopher has taken a left fork\n", 0);
+		ret = 1;
+	}
+	pthread_mutex_unlock(&ph->r->waiter);
+	return (ret);
+}
+
 int	ft_finish(t_rules *r)
 {
 	size_t i;
@@ -62,19 +82,21 @@ void	ft_get_lunch(t_philo *ph)
 	usleep(ph->r->tt_eat * 1000);
 	pthread_mutex_unlock(&ph->r->forks[ph->r_hand]);
 	pthread_mutex_unlock(&ph->r->forks[ph->l_hand]);
+	ph->r->n_forks[ph->l_hand] = 0;
+	ph->r->n_forks[ph->r_hand] = 0;
 	ft_messages(ph, "philosopher has eaten\n", 0);
 	ph->eat_flag = 0;
 	pthread_mutex_unlock(&ph->mutex);
 	pthread_mutex_unlock(&ph->eat);
 }
 
-void	ft_get_forks(t_philo *ph)
+/*void	ft_get_forks(t_philo *ph)
 {
 	pthread_mutex_lock(&ph->r->forks[ph->r_hand]);
 	ft_messages(ph, "philosopher has taken a right fork\n", 0);
 	pthread_mutex_lock(&ph->r->forks[ph->l_hand]);
 	ft_messages(ph, "philosopher has taken a left fork\n", 0);
-}
+}*/
 
 void	ft_eat_or_die(void *ph)
 {
@@ -115,11 +137,15 @@ void	ft_living(void *ph)
 	pthread_detach(pthread_id);
 	while (must_continue && !philo->r->is_dead)
 	{
-		ft_get_forks(philo);
-		ft_get_lunch(philo);
-		//ft_leave_forks(philo);
-		ft_get_sleep(philo);
-		ft_messages(philo, "philosopher is thinking\n", 0);
+		if (ft_can_take(ph))
+		{
+			//ft_get_forks(philo);
+			ft_get_lunch(philo);
+			//ft_leave_forks(philo);
+			ft_get_sleep(philo);
+			ft_messages(philo, "philosopher is thinking\n", 0);
+		}
+		usleep(100);
 	}
 }
 
@@ -155,12 +181,12 @@ int	ft_init_threads(t_rules *r)
 			return (1);
 		pthread_detach(thread_id);
 	}
-	philo = (void *)(&r->philo[0]);
+/*	philo = (void *)(&r->philo[0]);
 	if (pthread_create(&thread_id, NULL, (void *)ft_living, philo) != 0)
 		return (1);
 	pthread_detach(thread_id);
 	i = 1;
-	usleep(1000);
+	usleep(997);
 	while (i < r->n_philos)
 	{
 		if (i % 2 == 0)
@@ -172,17 +198,18 @@ int	ft_init_threads(t_rules *r)
 		}
 		i++;
 	}
-	usleep(1000);
+*/
 	i = 0;
 	while (i < r->n_philos)
 	{
-		if (i % 2 == 1)
-		{
+	//	if (i % 2 == 1)
+	//	{
 			philo = (void *)(&r->philo[i]);
 			if (pthread_create(&thread_id, NULL, (void *)ft_living, philo) != 0)
 				return (1);
 			pthread_detach(thread_id);
-		}
+	//	}
+//		usleep(1009);
 		i++;
 	}
 	return (0);
@@ -227,10 +254,19 @@ int	ft_set_philos(t_rules *r)
 
 int	ft_set_general(int argc, char *argv[], t_rules *r)
 {
+	unsigned int i;
+
 	r->n_times_to_eat = ((argc == 6) ? ft_atoi(argv[5]) : 0);
 	r->philo = NULL;
 	r->forks = NULL;
 	r->n_philos = ft_atoi(argv[1]);
+	if (r->n_philos < 2)
+		return (1);
+	if (!(r->n_forks = (unsigned int *)malloc(r->n_philos)))
+		return (1);
+	i = 0;
+	while (i < r->n_philos)
+		r->n_forks[i++] = 0;
 	r->tt_die = (uint64_t)ft_atoi(argv[2]);
 	r->tt_eat = (uint64_t)ft_atoi(argv[3]);
 	r->tt_sleep = (uint64_t)ft_atoi(argv[4]);
@@ -238,6 +274,7 @@ int	ft_set_general(int argc, char *argv[], t_rules *r)
 	pthread_mutex_init(&r->philo_dead, NULL);
 	pthread_mutex_lock(&r->philo_dead);
 	pthread_mutex_init(&r->message, NULL);
+	pthread_mutex_init(&r->waiter, NULL);
 	return (0);
 }
 
