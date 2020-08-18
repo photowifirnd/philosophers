@@ -61,6 +61,14 @@ uint64_t	ft_time_in_ms(void)
 	return ((t.tv_sec * (uint64_t)1000) + (t.tv_usec / 1000));
 }
 
+uint64_t	ft_time_in_micro_s(void)
+{
+	static struct timeval	t;
+
+	gettimeofday(&t, NULL);
+	return ((t.tv_sec * (uint64_t)1000 * (uint64_t)1000) + (t.tv_usec));
+}
+
 void	ft_putchar(char c)
 {
 	write(1, &c ,1);
