@@ -17,12 +17,12 @@ void	ft_get_lunch(t_philo *ph)
 	pthread_mutex_unlock(&ph->r->forks[ph->r_hand]);
 	pthread_mutex_unlock(&ph->r->forks[ph->l_hand]);
 	ph->eat_flag = 0;
+	ft_messages(ph, "philosopher has eaten\n", 0);
+	pthread_mutex_unlock(&ph->mutex);
 	pthread_mutex_lock(&ph->r->fork_state);
 	ph->r->n_forks[ph->l_hand] = 0;
 	ph->r->n_forks[ph->r_hand] = 0;
 	pthread_mutex_unlock(&ph->r->fork_state);
-	ft_messages(ph, "philosopher has eaten\n", 0);
-	pthread_mutex_unlock(&ph->mutex);
 	pthread_mutex_unlock(&ph->eat);
 	/*Bloquea y desbloquea para coger 2 tenedores a la vez*/
 }
@@ -35,6 +35,14 @@ void	ft_get_forks(t_philo *ph)
 	ft_messages(ph, "philosopher has taken a right fork\n", 0);
 }
 
+void	ft_get_forks_reverse(t_philo *ph)
+{
+	pthread_mutex_lock(&ph->r->forks[ph->r_hand]);
+	ft_messages(ph, "philosopher has taken a right fork\n", 0);
+	pthread_mutex_lock(&ph->r->forks[ph->l_hand]);
+	ft_messages(ph, "philosopher has taken a left fork\n", 0);
+}
+
 int	ft_can_take(t_philo *ph)
 {
 	int	ret;
@@ -45,7 +53,10 @@ int	ft_can_take(t_philo *ph)
 	{
 		ph->r->n_forks[ph->l_hand] = 1;
 		ph->r->n_forks[ph->r_hand] = 1;
-		ft_get_forks(ph);
+		if (ph->id % 2)
+			ft_get_forks(ph);
+		else
+			ft_get_forks_reverse(ph);
 		ret = 1;
 	}
 	pthread_mutex_unlock(&ph->r->fork_state);
@@ -70,13 +81,10 @@ void	ft_living(void *ph)
 	{
 		if (ft_can_take(ph))
 		{
-		//	ft_get_forks(philo);
 			ft_get_lunch(philo);
-			//ft_leave_forks(philo);
 			ft_get_sleep(philo);
 			ft_messages(philo, "philosopher is thinking\n", 0);
 		}
-		else
-			usleep(100);
+		usleep(73);
 	}
 }
