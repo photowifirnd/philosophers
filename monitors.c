@@ -40,6 +40,6 @@ void	ft_eat_or_die(void *ph)
 			return ;
 		}
 		pthread_mutex_unlock(&philo->mutex);
-		usleep(60);
+		usleep(200);
 	}
 }

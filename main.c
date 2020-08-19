@@ -23,30 +23,6 @@ int	ft_finish(t_rules *r)
 	return (0);
 }
 
-void	ft_messages(t_philo *ph, const char *str, int id_message)
-{
-	size_t timestamp;
-
-	pthread_mutex_lock(&ph->r->message);
-	if (ph->r->is_dead == 0)
-	{
-		timestamp = ft_time_in_ms();
-		ft_putnbr(timestamp);
-		write(1, " ", 1);
-		ft_putnbr(ph->id + 1);
-		write(1, " ", 1);
-		write(1, str, ft_strlen(str));
-		if (id_message == 1)
-		{
-			ph->r->is_dead = 1;
-			write(1, "philosopher's dead at: ", 23);
-			ft_putnbr(ph->will_die / 1000);
-			ft_putchar('\n');
-		}
-	}
-	pthread_mutex_unlock(&ph->r->message);
-}
-
 int	ft_init_threads(t_rules *r)
 {
 	void		*philo;
@@ -71,10 +47,9 @@ int	ft_init_threads(t_rules *r)
 	return (0);
 }
 
-int	ft_error(const char *str)
+int	ft_init(int argc, char *argv[], t_rules *r)
 {
-	write(1, str, ft_strlen(str));
-	return (1);
+	return (ft_set_general(argc, argv, r) || ft_set_philos(r) || ft_set_forks(r));
 }
 
 int	main(int argc, char *argv[])
