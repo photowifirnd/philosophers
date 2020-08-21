@@ -102,8 +102,9 @@ void	ft_living(void *ph)
 			ft_get_lunch(philo);
 			ft_get_sleep(philo);
 			ft_messages(philo, "philosopher is thinking\n", 0);
-			usleep(80);
+			usleep(3);
 		}
-			usleep(10);
+		else
+			usleep(100);
 	}
 }

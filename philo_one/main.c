@@ -38,6 +38,7 @@ int	ft_init_threads(t_rules *r)
 	}
 	while (i < r->n_philos)
 	{
+		usleep(50);
 		philo = (void *)(&r->philo[i]);
 		if (pthread_create(&thread_id, NULL, (void *)ft_living, philo) != 0)
 			return (1);
