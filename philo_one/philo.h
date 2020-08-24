@@ -10,7 +10,7 @@ struct			s_rules;
 
 typedef struct		s_philo
 {
-	int		id;
+	unsigned int		id;
 	int		r_hand;
 	int		l_hand;
 	int		eat_flag;
@@ -25,7 +25,7 @@ typedef struct		s_philo
 typedef struct		s_rules
 {
 	unsigned int	n_philos;
-	unsigned int	*n_forks;
+	int		*n_forks;
 	uint64_t	tt_die;
 	uint64_t	tt_eat;
 	uint64_t	tt_sleep;
@@ -36,7 +36,7 @@ typedef struct		s_rules
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	philo_dead;
 	pthread_mutex_t	message;
-	pthread_mutex_t fork_state;
+	pthread_mutex_t *fork_state;
 }			t_rules;
 
 int			ft_set_philos(t_rules *r);
@@ -46,7 +46,8 @@ int			ft_init(int argc, char *argv[], t_rules *r);
 void			ft_living(void *ph);
 void			ft_eat_or_die(void *ph);
 void			ft_count_eaters(void *rules);
-void			ft_get_forks(t_philo *ph);
+int			ft_get_r_fork(t_philo *ph);
+void			ft_get_l_fork(t_philo *ph);
 void			ft_get_lunch(t_philo *ph);
 void			ft_leave_forks(t_philo *ph);
 int			ft_error(const char *str);

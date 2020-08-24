@@ -47,18 +47,20 @@ int	ft_set_general(int argc, char *argv[], t_rules *r)
 	r->n_philos = ft_atoi(argv[1]);
 	if (r->n_philos < 2)
 		return (1);
-	if (!(r->n_forks = (unsigned int *)malloc(r->n_philos)))
+	if (!(r->n_forks = (int *)malloc(r->n_philos)))
+		return (1);
+	if (!(r->fork_state = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * r->n_philos)))
 		return (1);
 	i = 0;
 	while (i < r->n_philos)
 	{
+		pthread_mutex_init(&r->fork_state[i], NULL);
 		r->n_forks[i++] = 0;
 	}
 	r->tt_die = (uint64_t)ft_atoi(argv[2]) * 1000;
 	r->tt_eat = (uint64_t)ft_atoi(argv[3]) * 1000;
 	r->tt_sleep = (uint64_t)ft_atoi(argv[4]) * 1000;
 	r->is_dead = 0;
-	pthread_mutex_init(&r->fork_state, NULL);
 	pthread_mutex_init(&r->message, NULL);
 	pthread_mutex_init(&r->philo_dead, NULL);
 	pthread_mutex_lock(&r->philo_dead);
