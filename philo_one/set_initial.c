@@ -55,7 +55,7 @@ int	ft_set_general(int argc, char *argv[], t_rules *r)
 	while (i < r->n_philos)
 	{
 		pthread_mutex_init(&r->fork_state[i], NULL);
-		r->n_forks[i++] = 0;
+		r->n_forks[i++] = -1;
 	}
 	r->tt_die = (uint64_t)ft_atoi(argv[2]) * 1000;
 	r->tt_eat = (uint64_t)ft_atoi(argv[3]) * 1000;

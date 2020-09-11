@@ -38,10 +38,26 @@ int	ft_init_threads(t_rules *r)
 	}
 	while (i < r->n_philos)
 	{
+		if (i % 2 == 0)
+		{
 		philo = (void *)(&r->philo[i]);
 		if (pthread_create(&thread_id, NULL, (void *)ft_living, philo) != 0)
 			return (1);
 		pthread_detach(thread_id);
+		}
+		i++;
+	}
+	usleep(200);
+	i = 0;
+	while (i < r->n_philos)
+	{
+		if (i % 2 == 1)
+		{
+		philo = (void *)(&r->philo[i]);
+		if (pthread_create(&thread_id, NULL, (void *)ft_living, philo) != 0)
+			return (1);
+		pthread_detach(thread_id);
+		}
 		i++;
 	}
 	return (0);
