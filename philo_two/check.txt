@@ -1,0 +1,118 @@
+1600084267076 1 philosopher has taken a left fork
+1600084267076 3 philosopher has taken a left fork
+1600084267077 1 philosopher has taken a right fork
+1600084267077 3 philosopher has taken a right fork
+1600084267077 1 philosopher has eaten
+1600084267077 3 philosopher has eaten
+1600084267277 1 philosopher is sleeping
+1600084267277 4 philosopher has taken a left fork
+1600084267277 2 philosopher has taken a left fork
+1600084267277 3 philosopher is sleeping
+1600084267277 4 philosopher has taken a right fork
+1600084267277 2 philosopher has taken a right fork
+1600084267277 4 philosopher has eaten
+1600084267277 2 philosopher has eaten
+1600084267477 1 philosopher is thinking
+1600084267477 3 philosopher is thinking
+1600084267477 4 philosopher is sleeping
+1600084267477 1 philosopher has taken a left fork
+1600084267478 3 philosopher has taken a left fork
+1600084267478 2 philosopher is sleeping
+1600084267478 1 philosopher has taken a right fork
+1600084267478 3 philosopher has taken a right fork
+1600084267478 1 philosopher has eaten
+1600084267478 3 philosopher has eaten
+1600084267677 4 philosopher is thinking
+1600084267678 2 philosopher is thinking
+1600084267678 1 philosopher is sleeping
+1600084267678 4 philosopher has taken a left fork
+1600084267678 2 philosopher has taken a left fork
+1600084267678 3 philosopher is sleeping
+1600084267678 4 philosopher has taken a right fork
+1600084267678 2 philosopher has taken a right fork
+1600084267678 4 philosopher has eaten
+1600084267678 2 philosopher has eaten
+1600084267878 1 philosopher is thinking
+1600084267878 3 philosopher is thinking
+1600084267879 4 philosopher is sleeping
+1600084267879 3 philosopher has taken a left fork
+1600084267879 1 philosopher has taken a left fork
+1600084267879 2 philosopher is sleeping
+1600084267879 3 philosopher has taken a right fork
+1600084267879 1 philosopher has taken a right fork
+1600084267879 3 philosopher has eaten
+1600084267879 1 philosopher has eaten
+1600084268079 4 philosopher is thinking
+1600084268079 2 philosopher is thinking
+1600084268079 3 philosopher is sleeping
+1600084268079 4 philosopher has taken a left fork
+1600084268079 2 philosopher has taken a left fork
+1600084268079 1 philosopher is sleeping
+1600084268079 4 philosopher has taken a right fork
+1600084268080 2 philosopher has taken a right fork
+1600084268080 4 philosopher has eaten
+1600084268080 2 philosopher has eaten
+1600084268279 3 philosopher is thinking
+1600084268279 1 philosopher is thinking
+1600084268280 4 philosopher is sleeping
+1600084268280 3 philosopher has taken a left fork
+1600084268280 1 philosopher has taken a left fork
+1600084268280 2 philosopher is sleeping
+1600084268280 3 philosopher has taken a right fork
+1600084268280 1 philosopher has taken a right fork
+1600084268280 3 philosopher has eaten
+1600084268281 1 philosopher has eaten
+1600084268480 4 philosopher is thinking
+1600084268480 2 philosopher is thinking
+1600084268481 3 philosopher is sleeping
+1600084268481 2 philosopher has taken a left fork
+1600084268481 4 philosopher has taken a left fork
+1600084268481 1 philosopher is sleeping
+1600084268481 2 philosopher has taken a right fork
+1600084268481 4 philosopher has taken a right fork
+1600084268481 2 philosopher has eaten
+1600084268481 4 philosopher has eaten
+1600084268681 3 philosopher is thinking
+1600084268681 1 philosopher is thinking
+1600084268682 2 philosopher is sleeping
+1600084268682 1 philosopher has taken a left fork
+1600084268682 3 philosopher has taken a left fork
+1600084268682 4 philosopher is sleeping
+1600084268682 1 philosopher has taken a right fork
+1600084268682 3 philosopher has taken a right fork
+1600084268682 1 philosopher has eaten
+1600084268682 3 philosopher has eaten
+1600084268882 2 philosopher is thinking
+1600084268882 4 philosopher is thinking
+1600084268883 1 philosopher is sleeping
+1600084268883 2 philosopher has taken a left fork
+1600084268883 4 philosopher has taken a left fork
+1600084268883 3 philosopher is sleeping
+1600084268883 2 philosopher has taken a right fork
+1600084268883 4 philosopher has taken a right fork
+1600084268883 2 philosopher has eaten
+1600084268883 4 philosopher has eaten
+1600084269083 1 philosopher is thinking
+1600084269083 3 philosopher is thinking
+1600084269083 2 philosopher is sleeping
+1600084269084 3 philosopher has taken a left fork
+1600084269084 1 philosopher has taken a left fork
+1600084269084 4 philosopher is sleeping
+1600084269084 3 philosopher has taken a right fork
+1600084269084 1 philosopher has taken a right fork
+1600084269084 3 philosopher has eaten
+1600084269084 1 philosopher has eaten
+1600084269284 2 philosopher is thinking
+1600084269284 4 philosopher is thinking
+1600084269284 3 philosopher is sleeping
+1600084269284 2 philosopher has taken a left fork
+1600084269284 4 philosopher has taken a left fork
+1600084269284 1 philosopher is sleeping
+1600084269284 2 philosopher has taken a right fork
+1600084269285 4 philosopher has taken a right fork
+1600084269285 2 philosopher has eaten
+1600084269285 4 philosopher has eaten
+1600084269484 3 philosopher is thinking
+1600084269484 1 philosopher is thinking
+1600084269485 3 philosopher has taken a left fork
+16000
