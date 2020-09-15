@@ -25,18 +25,17 @@ typedef struct		s_philo
 typedef struct		s_rules
 {
 	unsigned int	n_philos;
-	int		*n_forks;
 	uint64_t	tt_die;
 	uint64_t	tt_eat;
 	uint64_t	tt_sleep;
 	int		is_dead;
 	size_t	n_times_to_eat;
-//	uint64_t	initial_time;
-	t_philo		*philo;
+	uint64_t	initial_time;
+	int		f;
+	t_philo		philo[200];
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	philo_dead;
 	pthread_mutex_t	message;
-	pthread_mutex_t *fork_state;
 }			t_rules;
 
 int			ft_set_philos(t_rules *r);
