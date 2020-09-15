@@ -1,27 +1,26 @@
 #include "philo.h"
 
-/*int	ft_finish(t_rules *r)
+int	ft_finish(t_rules *r)
 {
 	size_t i;
+	char	str[250];
 
+	sem_unlink("SemForks");
+	sem_unlink("WriteMessage");
+	sem_unlink("PhiloDead");
 	i = 0;
 	if (r->philo != NULL)
 	{
 		while (i < r->n_philos)
 		{
-			if (r->forks != NULL)
-				pthread_mutex_destroy(&r->forks[i]);
-			pthread_mutex_destroy(&r->philo[i].mutex);
-			pthread_mutex_destroy(&r->philo[i++].eat);
+			ft_sem_name("SemMutex", (char *)str, i);
+			sem_unlink(str);
+			ft_sem_name("SemEat", (char *)str, i++);
+			sem_unlink(str);
 		}
-		free(r->philo);
-		(r->forks != NULL) ? free(r->forks): NULL;
 	}
-	pthread_mutex_destroy(&r->philo_dead);
-	pthread_mutex_destroy(&r->message);
-	//free the rest of malloced objects and init_mutexes;
 	return (0);
-}*/
+}
 
 int	ft_init_threads(t_rules *r)
 {
@@ -85,6 +84,6 @@ int	main(int argc, char *argv[])
 	i = 0;
 	while (i < (int)r.n_philos)
 		kill(r.philo[i++].pid, SIGKILL);
-//	ft_finish(&r); Falta implementar el limpiado y liberado de los semaforos
+	ft_finish(&r);
 	return (0);
 }
