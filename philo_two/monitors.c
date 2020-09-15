@@ -19,7 +19,10 @@ void	ft_count_eaters(void *rules)
 		i++;
 	}
 	if (r->n_times_to_eat > 0)
+	{
+		sem_wait(r->message);
 		r->is_dead = 1;
+	}
 	sem_post(r->philo_dead);
 }
 
@@ -35,7 +38,6 @@ void	ft_eat_or_die(void *ph)
 		sem_wait(philo->mutex);
 		if (!philo->eat_flag && ft_time_in_ms() > philo->will_die / 1000)
 		{
-//			sem_wait(philo->mutex);
 			ft_messages(philo, "philosofer died\n", 1);
 			sem_wait(philo->r->message);
 			sem_post(philo->mutex);

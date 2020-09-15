@@ -78,6 +78,6 @@ int	main(int argc, char *argv[])
 	if (ft_init_threads(&r))
 		return (1);
 	sem_wait(r.philo_dead);
-	ft_finish(&r); //Falta implementar el limpiado y liberado de los semaforos
+	ft_finish(&r);
 	return (0);
 }
