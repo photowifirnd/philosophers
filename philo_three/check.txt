@@ -1,0 +1,139 @@
+1600159414439 1 philosopher has taken a left fork
+1600159414439 1 philosopher has taken a right fork
+1600159414439 1 philosopher has eaten
+1600159414440 2 philosopher has taken a left fork
+1600159414440 2 philosopher has taken a right fork
+1600159414440 2 philosopher has eaten
+1600159414639 1 philosopher is sleeping
+1600159414639 3 philosopher has taken a left fork
+1600159414639 4 philosopher has taken a left fork
+1600159414640 2 philosopher is sleeping
+1600159414640 3 philosopher has taken a right fork
+1600159414640 4 philosopher has taken a right fork
+1600159414640 3 philosopher has eaten
+1600159414640 4 philosopher has eaten
+1600159414839 1 philosopher is thinking
+1600159414840 2 philosopher is thinking
+1600159414840 3 philosopher is sleeping
+1600159414840 1 philosopher has taken a left fork
+1600159414840 2 philosopher has taken a left fork
+1600159414841 4 philosopher is sleeping
+1600159414841 1 philosopher has taken a right fork
+1600159414841 2 philosopher has taken a right fork
+1600159414841 1 philosopher has eaten
+1600159414841 2 philosopher has eaten
+1600159415040 3 philosopher is thinking
+1600159415041 4 philosopher is thinking
+1600159415041 1 philosopher is sleeping
+1600159415041 3 philosopher has taken a left fork
+1600159415041 4 philosopher has taken a left fork
+1600159415041 2 philosopher is sleeping
+1600159415041 3 philosopher has taken a right fork
+1600159415041 4 philosopher has taken a right fork
+1600159415041 3 philosopher has eaten
+1600159415042 4 philosopher has eaten
+1600159415241 1 philosopher is thinking
+1600159415241 2 philosopher is thinking
+1600159415242 3 philosopher is sleeping
+1600159415242 1 philosopher has taken a left fork
+1600159415242 2 philosopher has taken a left fork
+1600159415242 4 philosopher is sleeping
+1600159415242 1 philosopher has taken a right fork
+1600159415242 2 philosopher has taken a right fork
+1600159415242 1 philosopher has eaten
+1600159415242 2 philosopher has eaten
+1600159415442 3 philosopher is thinking
+1600159415442 4 philosopher is thinking
+1600159415442 1 philosopher is sleeping
+1600159415442 3 philosopher has taken a left fork
+1600159415442 4 philosopher has taken a left fork
+1600159415442 2 philosopher is sleeping
+1600159415442 3 philosopher has taken a right fork
+1600159415442 4 philosopher has taken a right fork
+1600159415443 3 philosopher has eaten
+1600159415443 4 philosopher has eaten
+1600159415642 1 philosopher is thinking
+1600159415642 2 philosopher is thinking
+1600159415643 3 philosopher is sleeping
+1600159415643 2 philosopher has taken a left fork
+1600159415643 1 philosopher has taken a left fork
+1600159415643 4 philosopher is sleeping
+1600159415643 2 philosopher has taken a right fork
+1600159415643 1 philosopher has taken a right fork
+1600159415643 2 philosopher has eaten
+1600159415644 1 philosopher has eaten
+1600159415843 3 philosopher is thinking
+1600159415843 4 philosopher is thinking
+1600159415844 2 philosopher is sleeping
+1600159415844 3 philosopher has taken a left fork
+1600159415844 4 philosopher has taken a left fork
+1600159415844 1 philosopher is sleeping
+1600159415844 3 philosopher has taken a right fork
+1600159415844 4 philosopher has taken a right fork
+1600159415844 3 philosopher has eaten
+1600159415844 4 philosopher has eaten
+1600159416044 2 philosopher is thinking
+1600159416044 1 philosopher is thinking
+1600159416044 3 philosopher is sleeping
+1600159416045 2 philosopher has taken a left fork
+1600159416045 1 philosopher has taken a left fork
+1600159416045 4 philosopher is sleeping
+1600159416045 2 philosopher has taken a right fork
+1600159416045 1 philosopher has taken a right fork
+1600159416045 2 philosopher has eaten
+1600159416045 1 philosopher has eaten
+1600159416245 3 philosopher is thinking
+1600159416245 4 philosopher is thinking
+1600159416245 2 philosopher is sleeping
+1600159416245 3 philosopher has taken a left fork
+1600159416245 4 philosopher has taken a left fork
+1600159416246 1 philosopher is sleeping
+1600159416246 3 philosopher has taken a right fork
+1600159416246 4 philosopher has taken a right fork
+1600159416246 3 philosopher has eaten
+1600159416246 4 philosopher has eaten
+1600159416445 2 philosopher is thinking
+1600159416446 1 philosopher is thinking
+1600159416446 3 philosopher is sleeping
+1600159416446 2 philosopher has taken a left fork
+1600159416446 1 philosopher has taken a left fork
+1600159416446 4 philosopher is sleeping
+1600159416446 2 philosopher has taken a right fork
+1600159416447 1 philosopher has taken a right fork
+1600159416447 2 philosopher has eaten
+1600159416447 1 philosopher has eaten
+1600159416646 3 philosopher is thinking
+1600159416646 4 philosopher is thinking
+1600159416647 2 philosopher is sleeping
+1600159416647 3 philosopher has taken a left fork
+1600159416647 4 philosopher has taken a left fork
+1600159416647 1 philosopher is sleeping
+1600159416647 3 philosopher has taken a right fork
+1600159416647 4 philosopher has taken a right fork
+1600159416647 3 philosopher has eaten
+1600159416647 4 philosopher has eaten
+1600159416847 2 philosopher is thinking
+1600159416847 1 philosopher is thinking
+1600159416847 3 philosopher is sleeping
+1600159416847 2 philosopher has taken a left fork
+1600159416847 1 philosopher has taken a left fork
+1600159416848 4 philosopher is sleeping
+1600159416848 2 philosopher has taken a right fork
+1600159416848 1 philosopher has taken a right fork
+1600159416848 2 philosopher has eaten
+1600159416848 1 philosopher has eaten
+1600159417047 3 philosopher is thinking
+1600159417048 4 philosopher is thinking
+1600159417048 2 philosopher is sleeping
+1600159417048 4 philosopher has taken a left fork
+1600159417048 3 philosopher has taken a left fork
+1600159417048 1 philosopher is sleeping
+1600159417048 4 philosopher has taken a right fork
+1600159417048 3 philosopher has taken a right fork
+1600159417048 4 philosopher has eaten
+1600159417048 3 philosopher has eaten
+1600159417248 2 philosopher is thinking
+1600159417248 1 philosopher is thinking
+1600159417248 4 philosopher is sleeping
+1600159417249 1 philosopher has taken a left fork
+160
