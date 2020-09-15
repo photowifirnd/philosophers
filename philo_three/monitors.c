@@ -12,10 +12,7 @@ void	ft_count_eaters(void *rules)
 	{
 		j = 0;
 		while (j < r->n_philos)
-			/*if ((int)r->philo[j].cnt >= (int)r->n_times_to_eat)
-				j++;
-			else*/
-				sem_wait(r->philo[j++].eat);
+			sem_wait(r->philo[j++].eat);
 		i++;
 	}
 	if (r->n_times_to_eat > 0)
@@ -30,19 +27,16 @@ void	ft_eat_or_die(void *ph)
 	philo = (t_philo *)ph;
 	while(1)
 	{
-		if (philo->r->is_dead)
-			return ;
 		sem_wait(philo->mutex);
 		if (!philo->eat_flag && ft_time_in_ms() > philo->will_die / 1000)
 		{
 			ft_messages(philo, "philosofer died\n", 1);
-			sem_wait(philo->r->message);
 			sem_post(philo->mutex);
 			sem_post(philo->r->philo_dead);
 			return ;
 		}
 		sem_post(philo->mutex);
-		usleep(2);
+		usleep(10);
 	}
 }
 

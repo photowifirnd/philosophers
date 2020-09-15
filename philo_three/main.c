@@ -18,6 +18,7 @@ int	ft_finish(t_rules *r)
 			ft_sem_name("SemEat", (char *)str, i++);
 			sem_unlink(str);
 		}
+		free(r->philo);
 	}
 	return (0);
 }
@@ -36,9 +37,10 @@ int	ft_init_threads(t_rules *r)
 			philo = (&r->philo[i]);
 			if ((philo->pid = fork()) < 0)
 				return (1);
-			else if (philo->pid == 0)
+			if (philo->pid == 0)
 			{
 				ft_living(philo);
+				printf("Saliendo: \n");
 				exit(0);
 			}
 		}
@@ -53,7 +55,7 @@ int	ft_init_threads(t_rules *r)
 			philo = (&r->philo[i]);
 			if ((philo->pid = fork()) < 0)
 				return (1);
-			else if (philo->pid == 0)
+			if (philo->pid == 0)
 			{
 				ft_living(philo);
 				exit(0);

@@ -22,5 +22,6 @@ void	ft_messages(t_philo *ph, const char *str, int id_message)
 		if (id_message == 1)
 			ph->r->is_dead = 1;
 	}
-	sem_post(ph->r->message);
+	if (!ph->r->is_dead)
+		sem_post(ph->r->message);
 }

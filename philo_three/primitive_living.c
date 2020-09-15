@@ -24,9 +24,9 @@ void	ft_get_lunch(t_philo *ph)
 	ph->will_die = ft_time_in_micro_s() + ph->r->tt_die;
 	ft_messages(ph, "philosopher has eaten\n", 0);
 	usleep(ph->r->tt_eat);
-	ft_leave_forks(ph);
 	ph->last_eat = ph->will_die - ph->r->tt_die;
 	ph->eat_flag = 0;
+	ft_leave_forks(ph);
 	ph->cnt++;
 	sem_post(ph->mutex);
 	sem_post(ph->eat);
