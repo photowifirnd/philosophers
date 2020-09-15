@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_initial.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheras-f <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/15 15:05:39 by jheras-f          #+#    #+#             */
+/*   Updated: 2020/09/15 15:06:14 by jheras-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 int	ft_set_forks(t_rules *r)
@@ -5,7 +17,8 @@ int	ft_set_forks(t_rules *r)
 	size_t	i;
 
 	i = 0;
-	if (!(r->forks = (pthread_mutex_t *)malloc(sizeof(*(r->forks)) * r->n_philos)))
+	if (!(r->forks = (pthread_mutex_t *)malloc(sizeof(*(r->forks))
+					* r->n_philos)))
 		return (1);
 	while (i < r->n_philos)
 		pthread_mutex_init(&r->forks[i++], NULL);

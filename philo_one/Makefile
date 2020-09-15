@@ -6,7 +6,7 @@ FLAGS = -Wall -Werror -Wextra -I -g
 
 LIBLINK = -lpthread
 
-SRCS = main.c common.c set_initial.c primitive_living.c monitors.c messages.c
+SRCS = main.c common.c common_aux.c set_initial.c primitive_living.c monitors.c messages.c threads.c
 
 OBJS = $(SRCS:.c=.o)
 

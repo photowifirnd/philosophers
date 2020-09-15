@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitors.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheras-f <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/15 14:56:00 by jheras-f          #+#    #+#             */
+/*   Updated: 2020/09/15 14:56:02 by jheras-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	ft_count_eaters(void *rules)
@@ -25,7 +37,7 @@ void	ft_eat_or_die(void *ph)
 	t_philo	*philo;
 
 	philo = (t_philo *)ph;
-	while(1)
+	while (1)
 	{
 		if (philo->r->is_dead)
 			return ;
@@ -34,7 +46,6 @@ void	ft_eat_or_die(void *ph)
 		{
 			ft_messages(philo, "philosofer died\n", 1);
 			pthread_mutex_lock(&philo->r->message);
-//			write(1, "Finalizando\n", 12);
 			pthread_mutex_unlock(&philo->mutex);
 			pthread_mutex_unlock(&philo->r->philo_dead);
 			return ;

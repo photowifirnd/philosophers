@@ -42,6 +42,7 @@ int			ft_set_philos(t_rules *r);
 int			ft_set_forks(t_rules *r);
 int			ft_set_general(int argc, char *argv[], t_rules *r);
 int			ft_init(int argc, char *argv[], t_rules *r);
+int			ft_init_even(t_rules *r);
 void			ft_living(void *ph);
 void			ft_eat_or_die(void *ph);
 void			ft_count_eaters(void *rules);
