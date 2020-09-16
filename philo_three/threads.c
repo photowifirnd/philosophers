@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sem.c                                              :+:      :+:    :+:   */
+/*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jheras-f <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/16 09:42:03 by jheras-f          #+#    #+#             */
-/*   Updated: 2020/09/16 09:42:06 by jheras-f         ###   ########.fr       */
+/*   Created: 2020/09/16 09:34:46 by jheras-f          #+#    #+#             */
+/*   Updated: 2020/09/16 09:52:47 by jheras-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-sem_t	*ft_sem_open(char const *str, int val)
+int	ft_init_even(t_rules *r)
 {
-	sem_unlink(str);
-	return (sem_open(str, O_CREAT | O_EXCL, 0644, val));
-}
+	t_philo		*philo;
+	size_t		i;
 
-char	*ft_sem_name(char const *str, char *buff, int pos)
-{
-	int	i;
-
-	i = ft_strcpy(buff, str);
-	while (pos > 0)
+	i = 0;
+	while (i < r->n_philos)
 	{
-		buff[i++] = (pos % 10) + '0';
-		pos /= 10;
+		if (i % 2 == 0)
+		{
+			philo = (&r->philo[i]);
+			if ((philo->pid = fork()) < 0)
+				return (1);
+			if (philo->pid == 0)
+			{
+				ft_living(philo);
+				printf("Saliendo: \n");
+				exit(0);
+			}
+		}
+		i++;
 	}
-	buff[i] = 0;
-	return (buff);
+	usleep(200);
+	return (0);
 }

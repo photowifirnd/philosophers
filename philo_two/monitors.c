@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitors.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheras-f <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/16 09:09:45 by jheras-f          #+#    #+#             */
+/*   Updated: 2020/09/16 09:12:47 by jheras-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	ft_count_eaters(void *rules)
@@ -15,7 +27,7 @@ void	ft_count_eaters(void *rules)
 			if ((int)r->philo[j].cnt >= (int)r->n_times_to_eat)
 				j++;
 			else
-			sem_wait(r->philo[j++].eat);
+				sem_wait(r->philo[j++].eat);
 		i++;
 	}
 	if (r->n_times_to_eat > 0)
@@ -31,7 +43,7 @@ void	ft_eat_or_die(void *ph)
 	t_philo	*philo;
 
 	philo = (t_philo *)ph;
-	while(1)
+	while (1)
 	{
 		if (philo->r->is_dead)
 			return ;

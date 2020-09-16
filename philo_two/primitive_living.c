@@ -1,13 +1,14 @@
-/* Esta version trata de identificar el numero de philosophers que se le pasan por parametro, encaminando la ejecucion
- * de los hilos por un camino y otro en funcion de si el numero de philosophers totales es par o impar. a continuacion
- * ejecuta la accion de coger tenerodes dependiendo de si el propio philosopher está en una posición par o impar
- * ordenando coger los tenedores de dos en dos o en caso de ser par coger un tenedor y comprobar si el otro tenedor
- * está disponible o no y de no estarlo, volver a dejar el tenedor en la mesa para reintentarlo de nuevo más tarde.
- * VOY A REALIZAR UNA COMPIA DE ESTA VERSION PARA TRATAR DE LIMPIARLA. AYER PASÉ EL MINISHELL Y ESTAMOS A 11/09/2020
- * La version que estás editando pertenece al fichero philo_one_11_09_2020_mira_el_comentario_de_primitive.tar
- * en esta he borrado todo los comentarios y las rutas even y odd para verlo mas claro y tratar de dar solucion a los
- * filosofos.
- * */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   primitive_living.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheras-f <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/16 09:16:11 by jheras-f          #+#    #+#             */
+/*   Updated: 2020/09/16 09:17:16 by jheras-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
 
@@ -21,17 +22,17 @@ void	ft_get_lunch(t_philo *ph)
 {
 	if (ph->cnt < (int)ph->r->n_times_to_eat || (int)ph->r->n_times_to_eat == 0)
 	{
-	sem_wait(ph->mutex);
-	ph->eat_flag = 1;
-	ph->will_die = ft_time_in_micro_s() + ph->r->tt_die;
-	ft_messages(ph, "philosopher has eaten\n", 0);
-	usleep(ph->r->tt_eat);
-	ft_leave_forks(ph);
-	ph->last_eat = ph->will_die - ph->r->tt_die;
-	ph->eat_flag = 0;
-	ph->cnt++;
-	sem_post(ph->mutex);
-	sem_post(ph->eat);
+		sem_wait(ph->mutex);
+		ph->eat_flag = 1;
+		ph->will_die = ft_time_in_micro_s() + ph->r->tt_die;
+		ft_messages(ph, "philosopher has eaten\n", 0);
+		usleep(ph->r->tt_eat);
+		ft_leave_forks(ph);
+		ph->last_eat = ph->will_die - ph->r->tt_die;
+		ph->eat_flag = 0;
+		ph->cnt++;
+		sem_post(ph->mutex);
+		sem_post(ph->eat);
 	}
 }
 
@@ -53,7 +54,7 @@ void	ft_living(void *ph)
 {
 	t_philo		*philo;
 	pthread_t	pthread_id;
-	int		must_continue;
+	int			must_continue;
 
 	must_continue = 1;
 	philo = (t_philo *)ph;
